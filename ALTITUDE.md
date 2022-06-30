@@ -9,7 +9,13 @@
 ```
 use either `pip` or `conda` depending on your packet manager
 
-## 2. Run
+## 2. .env file
+Create a .env file in the `altitude` folder, with the same format as the provided `.env.template` file.
+
+A read-only user for the Road Condition DB can be found in the `RCDB.md` file. 
+To get altitude data from the DHM service, you will need to create your own username/password using their own website. 
+
+## 3. Run
 ```console
 ~/altitude$ jupyter notebook
 ```
