@@ -47,21 +47,28 @@ return query
 
 Get the coordinates (latitude, longitude) of a point located on the way with id `way_id` at a distance from the start of the way `way_dist`
 
-### 3.2 Prototype
+### 3.2 Examples
+#### 1. Getting the coordinates of all the rows stored in the altitude table.
 ```sql
-getCoord(way_id character varying(255), way_dist double precision) 
-returns table (x double, y double)
+select lat, lng from altitude, getCoord(way_id, way_dist);
+```
+#### 2. Getting the coordinates of a point.
+```sql
+select lat, lng from getCoord('420540', 0.25);
 ```
 
-### 3.3 Implementation
+### 3.3 Prototype
+```sql
+getCoord(way_id character varying(255), way_dist double precision) 
+returns table (lat double, lng double)
+```
+
+### 3.4 Implementation
 
 ```sql
-select ST_LineInterpolatePoint(geom, way_dist / ST_Length(geom::geography)) into point 
-from way where id=way_id;
-
-return query 
-    select ST_X(point), ST_Y(point)
-    from way where id=way_id;
+select ST_Y(point) as lat, ST_X(point) as lng 
+from way, ST_LineInterpolatePoint(geom, way_dist) as point 
+where id = way_id;
 ```
 
 ## 4. wayDist

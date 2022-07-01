@@ -11,8 +11,9 @@ port = 5432
 
 query = """
 SELECT * FROM altitude
-WHERE way_id='100189863'
+WHERE way_id='28092984'
 """
+args=None
 
 def query_db(query, args=None):
     conn = psycopg2.connect(database=database, user=user, password=pwd, host=host, port=port) 
@@ -22,5 +23,5 @@ def query_db(query, args=None):
     conn.close()
     return data
 
-data = query_db(query)
+data = query_db(query, args)
 print(data)
