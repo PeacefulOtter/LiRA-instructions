@@ -1,5 +1,5 @@
 
-# LiRA-ML
+# LiRA-GAUSSIAN-PROCESS
 
 - repo: https://github.com/PeacefulOtter/LiRA-Thesis
 
