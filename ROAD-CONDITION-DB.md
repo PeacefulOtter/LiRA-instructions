@@ -1,5 +1,5 @@
 
-# RCDB - Road Condition Database
+# Road Condition Database
 
 ## Read-only user credentials
 ```
